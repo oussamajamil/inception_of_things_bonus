@@ -26,6 +26,16 @@ helm repo update
 echo -e "${CYAN}-----------gitlab done-------------------${RESET}"
 
 
+helm upgrade --install gitlab gitlab/gitlab \
+	-f https://gitlab.com/gitlab-org/charts/gitlab/raw/master/examples/values-minikube-minimum.yaml \
+  --set global.hosts.domain="ojamil.com" \
+  --set certmanager-issuer.email="ojamil1999@gmail.com" \
+  --set global.hosts.https="false" \
+  --set global.ingress.configureCertmanager="false" \
+  --set gitlab-runner.install="false" \
+  -n gitlab
+
+  
 
 password=$(kubectl get secret gitlab-gitlab-initial-root-password -ojsonpath='{.data.password}' -n gitlab | base64 --decode)
 echo -e "${CYAN}-----------gitlab password: ${password}  -------------------${RESET}"
