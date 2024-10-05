@@ -28,7 +28,7 @@ echo -e "${CYAN}-----------gitlab done-------------------${RESET}"
 
 helm upgrade --install gitlab gitlab/gitlab \
 	-f https://gitlab.com/gitlab-org/charts/gitlab/raw/master/examples/values-minikube-minimum.yaml \
-  --set global.hosts.domain="gitlab.ojamil.com" \
+  --set global.hosts.domain="ojamil.com" \
   --set certmanager-issuer.email="ojamil1999@gmail.com" \
   --set global.hosts.https="false" \
   --set global.ingress.configureCertmanager="false" \
