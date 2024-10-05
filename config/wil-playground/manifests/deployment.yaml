@@ -1,0 +1,20 @@
+apiVersion: apps/v1 # Specifies the API version for the deployment
+kind: Deployment # Defines this resource as a Deployment
+metadata:
+  name: playground-app # Name of the deployment
+  namespace: dev # Namespace where the deployment will be created
+spec:
+  replicas: 1 # Number of pod replicas to run
+  selector:
+    matchLabels:
+      app: playground-app # Label selector to identify pods managed by this deployment
+  template:
+    metadata:
+      labels:
+        app: playground-app # Labels for the pods created by this deployment
+    spec:
+      containers:
+        - name: playground # Name of the container
+          image: wil42/playground:v1 # Container image to use
+          ports:
+            - containerPort: 8888 # Port exposed by the container

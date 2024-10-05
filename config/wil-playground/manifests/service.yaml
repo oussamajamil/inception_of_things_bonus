@@ -1,0 +1,14 @@
+apiVersion: v1 # Specifies the API version for the service
+kind: Service # Defines this resource as a Service
+metadata:
+  name: playground-service # Name of the service
+  namespace: dev # Namespace where the service will be created
+spec:
+  type: NodePort # Type of service that exposes it on a port on each node
+  selector:
+    app: playground-app # Label selector to route traffic to the pods
+  ports:
+    - protocol: TCP # Protocol used for the service
+      port: 8888 # Port exposed within the cluster
+      targetPort: 8888 # Port on the container to which traffic is forwarded
+      nodePort: 30888 # Port exposed on the host machine for external access
